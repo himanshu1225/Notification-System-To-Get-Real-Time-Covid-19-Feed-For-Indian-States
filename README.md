@@ -1,4 +1,5 @@
-Check out the blog of this project at the following link :   
+Check out the blog of this project at the following link : 
+https://medium.com/@Himanshu_bhati/notification-system-to-get-real-time-covid-19-feed-for-indian-states-1aa6a6a0f01a
 # Introduction
 Today we are going to understand how we can build a notification system for Covid-19, such that we will be able to know the number of active cases , recovered cases & deaths within India for any state. So basically, we will learn to build a notification system in which for every hour or half an hour or whatever the time you set, it will show a notification regarding the information as discussed above in real time update.
 # Getting Started
