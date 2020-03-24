@@ -7,7 +7,7 @@ Two questions come in mind when we think of this project:
 * How will we show the notification ?
 # Data Source
 Data is taken from Ministry of health and family welfare (https://www.mohfw.gov.in/). This is website of government of India. There we will find a table of Covid-19 State wise status.
-# How we will show the notification
+# Notifications
 We will use plyer  package to show the notifications. To install this package go to command prompt and type: pip3 install plyer
 # Libraries and packages :
 1. Notification : It is used to show notifications on the screen.
