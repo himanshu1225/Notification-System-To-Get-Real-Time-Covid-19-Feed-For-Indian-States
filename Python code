@@ -1,0 +1,40 @@
+from plyer import notification
+import requests
+from bs4 import BeautifulSoup
+import time
+
+def notifyMe(title, message):
+    notification.notify(title = title, message = message,app_icon = "icon.ico",timeout = 10)
+
+def GetData(url):
+    r = requests.get(url)
+    return r.text
+
+if __name__ == "__main__":
+    while True:
+        MyHtmlData = GetData("https://www.mohfw.gov.in/")
+        #print(MyHtmlData)
+        soup = BeautifulSoup(MyHtmlData, 'html.parser')
+        #print(soup.prettify())
+        #for table in soup.find_all('table'):
+            #print(table)
+            #print(table.get_text())
+        MyDataStr = "" 
+        for tr in soup.find_all('tbody')[7].find_all('tr'):
+            MyDataStr += tr.get_text()
+        MyDataStr = MyDataStr[1:]
+
+        states = ['Rajasthan','Karnataka','Maharashtra','Kerala']
+        #print(MyDataStr)
+        #print(MyDataStr.split("\n\n"))
+        ItemList = MyDataStr.split("\n\n")
+        for item in ItemList[:22]:
+            DataList = item.split('\n')
+            if(DataList[1] in states):
+                print(DataList) 
+                nTitle = 'Cases of COVID-19'
+                nText = f"State: {DataList[1]}\nIndian: {DataList[2]} & Foreign: {DataList[3]}\nRecovered: {DataList[4]}\nDeaths: {DataList[5]}"
+                notifyMe(nTitle, nText)
+                time.sleep(2)
+        time.sleep(1800)
+
